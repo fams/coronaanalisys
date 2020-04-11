@@ -1,3 +1,12 @@
+library(ggplot2)
+library(dplyr)
+library(viridis)
+library(magrittr)
+library(hrbrthemes)
+library(scales)
+library(data.table)
+
+
 buildData = function(eedata,country,mincases) {
   cdata = eedata[ which(eedata$geoId == country),]
   cdata = cdata[order(cdata$year,cdata$month,cdata$day),1:7]
@@ -8,10 +17,23 @@ buildData = function(eedata,country,mincases) {
   return(cdata)
 }
 
+#pop <- function(x) (assign(as.character(substitute(x)), x[-length(x)], parent.frame()))
+
+buildPaises <- function(dataset, limit , ...){
+  cc <- list(...)
+  dt <- list()
+  for (c in cc) {
+    ds = buildData(dataset, c, limit)
+    dt = append(dt, list(ds))
+  }
+  return(rbindlist(dt))
+}
+
+
 plotcases <-function (lista){
   #plot pais1
   d1=lista[[1]]
-  
+
   plot(d1$start, d1$cum_cases,
        main="Evolucao a partir do D0 do caso 100",
        ylab="Casos",
@@ -41,7 +63,7 @@ plotcases <-function (lista){
 plotdeaths <-function (lista){
   #plot pais1
   d1=lista[[1]]
-  
+
   plot(d1$start, d1$cum_deaths,
        main="Evolucao a partir do D0 do caso 100",
        ylab="Mortes",
@@ -67,4 +89,26 @@ plotdeaths <-function (lista){
          a_names,
          fill=a_fill
   )
+}
+ggcases <- function(mydata){
+  p <-mydata %>%
+    ggplot( aes(x=start, y=cum_cases, group=countriesAndTerritories, color=countriesAndTerritories)) +
+    geom_line() +
+    scale_y_continuous(trans='log10') +
+    scale_color_viridis(discrete = TRUE) +
+    ggtitle("Casos a partir do centésimo") +
+    theme_ipsum() +
+    ylab("Casos acumulados") + xlab("dias a partir do caso 100")
+    return(p)
+}
+ggdeaths <- function(mydata){
+  p <-mydata %>%
+    ggplot( aes(x=start, y=cum_deaths, group=countriesAndTerritories, color=countriesAndTerritories)) +
+    geom_line() +
+    scale_y_continuous(trans='log10') +
+    scale_color_viridis(discrete = TRUE) +
+    ggtitle("Mortes a partir do centésimo caso") +
+    theme_ipsum() +
+    ylab("Mortes acumuladas (log10)") + xlab("dias a partir do caso 100")
+  return (p)
 }
