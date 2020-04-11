@@ -5,7 +5,7 @@ output:
   html_notebook: default
 ---
 
-Analise sem qualquer tipo de conhecimento em epidemiologia usando R.
+# Analise sem qualquer tipo de conhecimento em epidemiologia usando R.
 ```{r init, warning=FALSE}
 source("./init.R")
 ```
