@@ -1,4 +1,5 @@
-# Analise sem qualquer tipo de conhecimento em epidemiologia usando R.
+Analise sem qualquer tipo de conhecimento em epidemiologia usando R.
+====================================================================
 
 ``` r
 source("./init.R")
@@ -6,8 +7,16 @@ source("./init.R")
 
     ## [1] "All requested packages already installed"
 
-Usei o critério de 100 casos confirmados para o D0 da epidemia, porque
-100? porque sim.
+Essas gráficos comparativos normalizam o curso da epidemia considerando
+um D0 comum. Usei o critério de 100 casos confirmados para o D0 da
+epidemia, porque 100? porque sim. não leu o título?
+
+As linhas laranja do gráfico mostram o dia em que o país entrou
+majoritariamente em quarentena e tem objetivo de verificar qual a
+influência da Quarentena nas curvas.
+
+Qualquer erro ou deslise na análise é de responsabilidade de queme está
+lendo, não sou epidemiologista. :-P
 
 Abaixo estão os dados de Casos a partir do centésimo caso comparando Brasil, EUA, Italia, e Suécia
 --------------------------------------------------------------------------------------------------
