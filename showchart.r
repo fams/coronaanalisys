@@ -5,7 +5,9 @@
 # NY      March 21
 
 
-p = ggdeaths(paises,"") +
+cconf <-
+
+plotChart(paises,"Mortes a partir do caso 100","Mortes (log10)","log10","cum_cases") +
 geom_vline(xintercept=7, color="orange", size=.5)  +
 geom_vline(xintercept=14, color="orange", size=.5) +
 geom_vline(xintercept=19, color="orange", size=.5) +

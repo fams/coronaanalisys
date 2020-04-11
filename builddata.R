@@ -33,7 +33,11 @@ pkgLoad <- function( packages = "favourites" ) {
 
 buildData = function(eedata,country,mincases) {
   cdata = eedata[ which(eedata$geoId == country),]
-  cdata = cdata[order(cdata$year,cdata$month,cdata$day),1:7]
+  cdata = cdata[order(cdata$year,cdata$month,cdata$day),1:10]
+  cdata[,"cases_1000"] <- (cdata$cases /(cdata$popData2018 /1000))
+  cdata[,"deaths_1000"] <- (cdata$deaths /(cdata$popData2018 /1000))
+  cdata[,"cum_deaths_1000"] <- cumsum(cdata$deaths_1000)
+  cdata[,"cum_cases_1000"] <- cumsum(cdata$cases_1000)
   cdata[,"cum_cases"] <- cumsum(cdata$cases)
   cdata[,"cum_deaths"] <- cumsum(cdata$deaths)
   cdata = cdata[which(cdata$cum_cases > mincases ),]
@@ -51,25 +55,17 @@ buildPaises <- function(dataset, limit , ...){
   return(rbindlist(dt))
 }
 
-ggcases <- function(mydata, title){
+
+plotChart <- function(mydata, title,ylabel, trans, column){
   p <-mydata %>%
-    ggplot( aes(x=start, y=cum_cases, group=countriesAndTerritories, color=countriesAndTerritories)) +
+    ggplot( aes_string(x="start", y=column, group="countriesAndTerritories", color="countriesAndTerritories")) +
     geom_line() +
-    scale_y_continuous(trans='log10') +
     scale_color_viridis(discrete = TRUE) +
+    scale_y_continuous(trans=trans) +
     ggtitle(title) +
-    theme_ipsum() +
-    ylab("Casos acumulados") + xlab("dias a partir do caso 100")
-    return(p)
-}
-ggdeaths <- function(mydata, title){
-  p <-mydata %>%
-    ggplot( aes(x=start, y=cum_deaths, group=countriesAndTerritories, color=countriesAndTerritories)) +
-    geom_line() +
-    scale_y_continuous(trans='log10') +
-    scale_color_viridis(discrete = TRUE) +
-    ggtitle(title) +
-    theme_ipsum() +
-    ylab("Mortes acumuladas (log10)") + xlab("dias a partir do caso 100")
+    ylab(ylabel) +
+    xlab("dias a partir do caso 100")
+    theme_ipsum()
   return (p)
 }
+
