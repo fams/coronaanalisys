@@ -160,7 +160,7 @@ plotChart(plist,"Mortes a partir do caso 100 (mortes/1000 hab)","Mortes por 1000
 geom_vline(xintercept=7, color="orange", size=.5)  +
 geom_vline(xintercept=1, color="orange", size=.5) +
 geom_vline(xintercept=8, color="orange", size=.5) +
-annotate(geom="text", x=7, y=0.01,
+annotate(geom="text", x=7, y=0.008,
              label="Qt Brasil", angle = 90) +
 annotate(geom="text", x=1, y=0.008,
              label="Qt Argentina", angle = 90) +
