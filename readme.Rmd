@@ -139,8 +139,9 @@ annotate(geom="text", x=8, y=4000,
 ```
 ## Dados de Casos por 1000 habitantes a partir do centésimo caso comparando Brasil, India, Africa do Sul, e Argentina
 ```{r}
-plist <- buildPaises(data,100, "BR","IN","ZA","AR")
-plotChart(plist,"Casos a partir do caso 100 (casos/1000 hab)","Casos por 1000/hab","identity","cum_cases_1000") +
+plist <- buildPaises(data,100, "BR","IN","ZA","AR","MX")
+plotChart(plist,"Casos a require(nCov2019)
+require(dplyr)partir do caso 100 (casos/1000 hab)","Casos por 1000/hab","identity","cum_cases_1000") +
 geom_vline(xintercept=7, color="orange", size=.5)  +
 geom_vline(xintercept=1, color="orange", size=.5) +
 geom_vline(xintercept=8, color="orange", size=.5) +
@@ -155,7 +156,7 @@ annotate(geom="text", x=8, y=0.12,
 ```
 ## Dados de Mortes por 1000 habitantes a partir do centésimo caso comparando Brasil, India, Africa do Sul, e Argentina
 ```{r}
-plist <- buildPaises(data,100, "BR","IN","ZA","AR")
+plist <- buildPaises(data,100, "BR","IN","ZA","AR", "MX")
 plotChart(plist,"Mortes a partir do caso 100 (mortes/1000 hab)","Mortes por 1000/hab","identity","cum_deaths_1000") +
 geom_vline(xintercept=7, color="orange", size=.5)  +
 geom_vline(xintercept=1, color="orange", size=.5) +

@@ -48,7 +48,7 @@ annotate(geom="text", x=19, y=80000,
              label="Qt Eua", angle = 90)
 ```
 
-![](readme_files/figure-markdown_github/unnamed-chunk-9-1.png)
+![](readme_files/figure-markdown_github/unnamed-chunk-8-1.png)
 
 Dados de Mortes a partir do centésimo caso comparando Brasil, EUA, Italia, e Suécia
 -----------------------------------------------------------------------------------
@@ -71,7 +71,7 @@ annotate(geom="text", x=19, y=8000,
 
     ## Warning: Transformation introduced infinite values in continuous y-axis
 
-![](readme_files/figure-markdown_github/unnamed-chunk-10-1.png) \#\#
+![](readme_files/figure-markdown_github/unnamed-chunk-9-1.png) \#\#
 Dados de Casos por 1000 habitantes a partir do centésimo caso comparando
 Brasil, EUA, Italia, e Suécia
 
@@ -89,7 +89,7 @@ annotate(geom="text", x=19, y=2,
              label="Qt Eua", angle = 90)
 ```
 
-![](readme_files/figure-markdown_github/unnamed-chunk-11-1.png) \#\#
+![](readme_files/figure-markdown_github/unnamed-chunk-10-1.png) \#\#
 Dados de Mortes por 1000 habitantes a partir do centésimo caso
 comparando Brasil, EUA, Italia, e Suécia
 
@@ -107,7 +107,7 @@ annotate(geom="text", x=19, y=0.33,
              label="Qt Eua", angle = 90)
 ```
 
-![](readme_files/figure-markdown_github/unnamed-chunk-12-1.png)
+![](readme_files/figure-markdown_github/unnamed-chunk-11-1.png)
 
 Comparativo com outros países terceiro mundistas
 ================================================
@@ -133,7 +133,7 @@ annotate(geom="text", x=8, y=4000,
              label="Qt Africa do Sul", angle = 90)
 ```
 
-![](readme_files/figure-markdown_github/unnamed-chunk-13-1.png)
+![](readme_files/figure-markdown_github/unnamed-chunk-12-1.png)
 
 Dados de Mortes a partir do centésimo caso comparando Brasil, India, Africa do Sul, e Argentina
 -----------------------------------------------------------------------------------------------
@@ -155,13 +155,14 @@ annotate(geom="text", x=8, y=4000,
              label="Qt Africa do Sul", angle = 90)
 ```
 
-![](readme_files/figure-markdown_github/unnamed-chunk-14-1.png) \#\#
+![](readme_files/figure-markdown_github/unnamed-chunk-13-1.png) \#\#
 Dados de Casos por 1000 habitantes a partir do centésimo caso comparando
 Brasil, India, Africa do Sul, e Argentina
 
 ``` r
-plist <- buildPaises(data,100, "BR","IN","ZA","AR")
-plotChart(plist,"Casos a partir do caso 100 (casos/1000 hab)","Casos por 1000/hab","identity","cum_cases_1000") +
+plist <- buildPaises(data,100, "BR","IN","ZA","AR","MX")
+plotChart(plist,"Casos a require(nCov2019)
+require(dplyr)partir do caso 100 (casos/1000 hab)","Casos por 1000/hab","identity","cum_cases_1000") +
 geom_vline(xintercept=7, color="orange", size=.5)  +
 geom_vline(xintercept=1, color="orange", size=.5) +
 geom_vline(xintercept=8, color="orange", size=.5) +
@@ -175,12 +176,12 @@ annotate(geom="text", x=8, y=0.12,
              label="Qt Africa do Sul", angle = 90)
 ```
 
-![](readme_files/figure-markdown_github/unnamed-chunk-15-1.png) \#\#
+![](readme_files/figure-markdown_github/unnamed-chunk-14-1.png) \#\#
 Dados de Mortes por 1000 habitantes a partir do centésimo caso
 comparando Brasil, India, Africa do Sul, e Argentina
 
 ``` r
-plist <- buildPaises(data,100, "BR","IN","ZA","AR")
+plist <- buildPaises(data,100, "BR","IN","ZA","AR", "MX")
 plotChart(plist,"Mortes a partir do caso 100 (mortes/1000 hab)","Mortes por 1000/hab","identity","cum_deaths_1000") +
 geom_vline(xintercept=7, color="orange", size=.5)  +
 geom_vline(xintercept=1, color="orange", size=.5) +
@@ -195,4 +196,4 @@ annotate(geom="text", x=8, y=0.008,
              label="Qt Africa do Sul", angle = 90)
 ```
 
-![](readme_files/figure-markdown_github/unnamed-chunk-16-1.png)
+![](readme_files/figure-markdown_github/unnamed-chunk-15-1.png)
